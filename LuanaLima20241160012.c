@@ -59,10 +59,10 @@ int somar(int x, int y)
 int fatorial(int x)
 { //função utilizada para testes
   int i, fat = 1;
-  
+
   for (i = x; i > 1; i--)
   fat = fat * i;
-  
+
   return fat;
 }
 
@@ -93,9 +93,9 @@ int teste(int a)
 int q1(char data[]) {
   DataQuebrada dataAtual = quebraData(data);
   int fevereiro = 28;
-  
+
   int datavalida = 1;
-  
+
   //quebrar a string data em strings sDia, sMes, sAno
   int dia = dataAtual.iDia;
   int mes = dataAtual.iMes;
@@ -122,7 +122,7 @@ int q1(char data[]) {
     if (dia > fevereiro) 
       datavalida = 0;
   }
-    
+
   // checa os meses com 30 dias
   else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
     if (dia > 30) {
@@ -134,13 +134,12 @@ int q1(char data[]) {
   else if (dia > 31) {
     datavalida = 0;
   }  
-  
+
   if (datavalida)
     return 1;    
   else
     return 0;
 } 
-
 
 
 /*
@@ -159,28 +158,79 @@ int q1(char data[]) {
  */
 DiasMesesAnos q2(char datainicial[], char datafinal[])
 {
-
   //calcule os dados e armazene nas três variáveis a seguir
   DiasMesesAnos dma;
 
+  DataQuebrada dataInicial = quebraData(datainicial);
+  DataQuebrada dataFinal = quebraData(datafinal);
+
+  //checa a validade das datas a partir da questão 1
   if (q1(datainicial) == 0){
     dma.retorno = 2;
     return dma;
-  }else if (q1(datafinal) == 0){
+  }
+  else if (q1(datafinal) == 0){
     dma.retorno = 3;
     return dma;
-  }else{
+  }
+
+  else{
     //verifique se a data final não é menor que a data inicial
-    
+    if (dataInicial.iAno > dataFinal.iAno ) {
+      dma.retorno = 4;
+      return dma;
+    } 
+    else if (dataFinal.iAno == dataInicial.iAno && dataInicial.iMes > dataFinal.iMes) {
+      dma.retorno = 4;
+      return dma;
+    }
+    else if (dataFinal.iAno == dataInicial.iAno && dataFinal.iMes == dataInicial.iMes && dataInicial.iDia > dataFinal.iDia) {
+      dma.retorno = 4;    
+      return dma;
+    } 
+
     //calcule a distancia entre as datas
+    int mesAtual = 31;
+    // checa os meses com 30 dias
+    if (dataInicial.iMes == 4 || dataInicial.iMes == 6 || dataInicial.iMes == 9 || dataInicial.iMes == 11) {
+      mesAtual = 30;
+    }
+
+    int fevAtual = 28;
+    // checa bissexto
+    if (dataInicial.iAno % 4 == 0 && dataInicial.iAno / 100 != 0 && dataInicial.iAno % 400 != 0) {
+      fevAtual = 29;
+    }
+
+
+    //calcula a diferença entre os anos
+    dma.qtdAnos =  dataFinal.iAno - dataInicial.iAno;
+
+    //calcula a diferença entre os meses 
+    if (dataFinal.iMes > dataInicial.iMes) {
+      dma.qtdMeses = dataFinal.iMes - dataInicial.iMes;
+    } 
+    else {
+      dma.qtdMeses = dataInicial.iMes - dataFinal.iMes; 
+    }
+
+    //calcula a diferença entre os dias
+    if (dataFinal.iDia > dataInicial.iDia) {
+      dma.qtdDias = dataFinal.iDia - dataInicial.iDia;
+    } 
+    else {
+      dma.qtdDias = dataInicial.iDia - dataFinal.iDia;
+    }
+
+
 
 
     //se tudo der certo
     dma.retorno = 1;
     return dma;
-    
+
   }
-  
+
 }
 
 /*
@@ -198,10 +248,10 @@ int q3(char *texto, char c, int isCaseSensitive)
   int qtdOcorrencias = -1;
 
   if (isCaseSensitive == 1) {
-    
+
   }
   else {
-    
+
   }
 
   return qtdOcorrencias;
@@ -274,7 +324,7 @@ DataQuebrada quebraData(char data[]){
   for (i = 0; data[i] != '/'; i++){
     sDia[i] = data[i];	
   }
-  
+
   if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
     sDia[i] = '\0';  // coloca o barra zero no final
   }
@@ -282,7 +332,7 @@ DataQuebrada quebraData(char data[]){
     dq.valido = 0;
     return dq;
   }  
-  
+
 
   int j = i + 1; //anda 1 cada para pular a barra
   i = 0;
@@ -298,11 +348,11 @@ DataQuebrada quebraData(char data[]){
     dq.valido = 0;
   return dq;
   }
-  
+
 
   j = j + 1; //anda 1 cada para pular a barra
   i = 0;
-  
+
   for(; data[j] != '\0'; j++){
     sAno[i] = data[j];
     i++;
@@ -321,7 +371,7 @@ DataQuebrada quebraData(char data[]){
   dq.iAno = atoi(sAno); 
 
   dq.valido = 1;
-  
+
   return dq;
 }
 
