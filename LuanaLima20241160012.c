@@ -238,27 +238,19 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
   Um número n >= 0.
  */
 int q3(char *texto, char c, int isCaseSensitive) {
-  setlocale(LC_ALL, ""); // Configura o ambiente para exibir caracteres acentuados
+  setlocale(LC_ALL,
+            ""); // Configura o ambiente para exibir caracteres acentuados
 
   // Matriz de letras maiúsculas acentuadas
   char maiusculas[6][5] = {
-      {"Á", "À", "Â", "Ã", "Ä"}, 
-      {"É", "È", "Ê", "Ë"},      
-      {"Í", "Ì", "Î", "Ï"},      
-      {"Ó", "Ò", "Ô", "Õ", "Ö"}, 
-      {"Ú", "Ù", "Û", "Ü"},      
-      {"Ç"},                     
+      {"Á", "À", "Â", "Ã", "Ä"}, {"É", "È", "Ê", "Ë"}, {"Í", "Ì", "Î", "Ï"},
+      {"Ó", "Ò", "Ô", "Õ", "Ö"}, {"Ú", "Ù", "Û", "Ü"}, {"Ç"},
   };
 
   // Matriz de letras minúsculas acentuadas
-  char minusculas[6][5] = {
-      {"á", "à", "â", "ã", "ä"}, 
-      {"é", "è", "ê", "ë"},      
-      {"í", "ì", "î", "ï"},      
-      {"ó", "ò", "ô", "õ", "ö"}, 
-      {"ú", "ù", "û", "ü"},      
-      {"ç"}                      
-  };
+  char minusculas[6][5] = {{"á", "à", "â", "ã", "ä"}, {"é", "è", "ê", "ë"},
+                           {"í", "ì", "î", "ï"},      {"ó", "ò", "ô", "õ", "ö"},
+                           {"ú", "ù", "û", "ü"},      {"ç"}};
 
   int qtdOcorrencias = -1;
   qtdOcorrencias++;
@@ -267,8 +259,8 @@ int q3(char *texto, char c, int isCaseSensitive) {
     for (int i = 0; strlen(texto) > i; i++) {
       if (c == texto[i]) {
         qtdOcorrencias++;
-      } 
-      
+      }
+
       else if (c >= 97 && c <= 122) {
         if (c == 'a') {
           for (int j = 0; j <= 5; j++) {
@@ -276,42 +268,37 @@ int q3(char *texto, char c, int isCaseSensitive) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'e') {
+        } else if (c == 'e') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == minusculas[1][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'i') {
+        } else if (c == 'i') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == minusculas[2][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'o') {
+        } else if (c == 'o') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == minusculas[3][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'u') {
+        } else if (c == 'u') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == minusculas[4][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'c') {
+        } else if (c == 'c') {
           if (texto[i] == minusculas[5][0]) {
             qtdOcorrencias++;
           }
         }
-      } 
-      
+      }
+
       else if (c >= 65 && c <= 90) {
         if (c == 'A') {
           for (int j = 0; j <= 5; j++) {
@@ -319,44 +306,38 @@ int q3(char *texto, char c, int isCaseSensitive) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'E') {
+        } else if (c == 'E') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == maiusculas[1][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'I') {
+        } else if (c == 'I') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == maiusculas[2][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'O') {
+        } else if (c == 'O') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == maiusculas[3][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'U') {
+        } else if (c == 'U') {
           for (int j = 0; j <= 5; j++) {
             if (texto[i] == maiusculas[4][j]) {
               qtdOcorrencias++;
             }
           }
-        } 
-        else if (c == 'C') {
+        } else if (c == 'C') {
           if (texto[i] == maiusculas[5][0]) {
             qtdOcorrencias++;
           }
         }
       }
     }
-  } 
-  else {
+  } else {
     for (int i = 0; strlen(texto) > i; i++) {
       if (c == texto[i]) {
         qtdOcorrencias++;
@@ -374,36 +355,31 @@ int q3(char *texto, char c, int isCaseSensitive) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'e') {
+          } else if (c == 'e') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == minusculas[1][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'i') {
+          } else if (c == 'i') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == minusculas[2][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'o') {
+          } else if (c == 'o') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == minusculas[3][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'u') {
+          } else if (c == 'u') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == minusculas[4][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'c') {
+          } else if (c == 'c') {
             if (texto[i] == minusculas[5][0]) {
               qtdOcorrencias++;
             }
@@ -423,36 +399,31 @@ int q3(char *texto, char c, int isCaseSensitive) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'E') {
+          } else if (c == 'E') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == maiusculas[1][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'I') {
+          } else if (c == 'I') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == maiusculas[2][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'O') {
+          } else if (c == 'O') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == maiusculas[3][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'U') {
+          } else if (c == 'U') {
             for (int j = 0; j <= 5; j++) {
               if (texto[i] == maiusculas[4][j]) {
                 qtdOcorrencias++;
               }
             }
-          } 
-          else if (c == 'C') {
+          } else if (c == 'C') {
             if (texto[i] == maiusculas[5][0]) {
               qtdOcorrencias++;
             }
@@ -488,7 +459,107 @@ int q3(char *texto, char c, int isCaseSensitive) {
 
  */
 int q4(char *strTexto, char *strBusca, int posicoes[30]) {
+
+  setlocale(LC_ALL, "");
+
+  char maiusculas[6][5] = {
+      {"Á", "À", "Â", "Ã", "Ä"}, {"É", "È", "Ê", "Ë"}, {"Í", "Ì", "Î", "Ï"},
+      {"Ó", "Ò", "Ô", "Õ", "Ö"}, {"Ú", "Ù", "Û", "Ü"}, {"Ç"},
+  };
+  char minusculas[6][5] = {
+    {"á", "à", "â", "ã", "ä"}, {"é", "è", "ê", "ë"}, {"í", "ì", "î", "ï"}, 
+    {"ó", "ò", "ô", "õ", "ö"}, {"ú", "ù", "û", "ü"}, {"ç"}};
+
+  for (int i = 0; strlen(strTexto) > i; i++) {
+    for (int k = 0; k < 5; k++) {
+      if (strTexto[i] == maiusculas[0][k] || strTexto[i] == minusculas[0][k]) {
+        strTexto[i] = 'a';
+        
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      } 
+      
+      else if (strTexto[i] == maiusculas[1][k] || strTexto[i] == minusculas[1][k]) {
+        strTexto[i] = 'e';
+        
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      } 
+      
+      else if (strTexto[i] == maiusculas[2][k] || strTexto[i] == minusculas[2][k]) {
+        strTexto[i] = 'i';
+
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      } 
+      
+      else if (strTexto[i] == maiusculas[3][k] || strTexto[i] == minusculas[3][k]) {
+        strTexto[i] = 'o';
+
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      } 
+      
+      else if (strTexto[i] == maiusculas[4][k] || strTexto[i] == minusculas[4][k]) {
+        strTexto[i] = 'u';
+
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      } 
+      
+      else if (strTexto[i] == maiusculas[5][k] || strTexto[i] == minusculas[5][k]) {
+        strTexto[i] = 'c';
+
+        for (int j = i + 1; j < strlen(strTexto); j++) {
+          strTexto[j] = strTexto[j + 1];
+        }
+      }
+    }
+  }
+
   int qtdOcorrencias = -1;
+  qtdOcorrencias++;
+
+  int armazenamento = 0;
+
+  for (int i = 0; strlen(strTexto) > i; i++) {
+    if (strBusca[0] == strTexto[i]) {
+      posicoes[armazenamento] = i + 1;
+
+      for (int j = 1; strlen(strBusca) > j; j++) {
+        for (int k = i + 1; strlen(strBusca) + i > k; k++) {
+
+          if (strBusca[j] == strTexto[k]) {
+            if (j + 1 == strlen(strBusca)) {
+              posicoes[armazenamento + 1] = k + 1;
+              qtdOcorrencias++;
+              armazenamento = armazenamento + 2;
+
+              i = k;
+              break;
+            }
+
+            else {
+              j++;
+            }
+          }
+
+          else {
+            posicoes[armazenamento] = -1;
+            j = strlen(strBusca);
+
+            i = k;
+            break;
+          }
+        }
+      }
+    }
+  }
 
   return qtdOcorrencias;
 }
