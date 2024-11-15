@@ -610,7 +610,51 @@ int q5(int num) {
  */
 
 int q6(int numerobase, int numerobusca) {
+  int tam1 = 0;
+  int tam2 = 0;
+  for (int i = numerobase; i > 0; i = i / 10) {
+    tam1++;
+  }
+  for (int i = numerobusca; i > 0; i = i / 10) {
+    tam2++;
+  }
+
+  char numerobase_str[tam1];
+  sprintf(numerobase_str, "%d", numerobase);
+  char numerobusca_str[tam2];
+  sprintf(numerobusca_str, "%d", numerobusca);
+  
   int qtdOcorrencias;
+  qtdOcorrencias = 0;
+
+  for (int i = 0; tam1 > i; i++) {
+    if (numerobusca_str[0] == numerobase_str[i]) {
+
+      if (tam2 > 1) {
+        for (int j = 1; tam2 > j; j++) {
+          for (int k = i + 1; tam2 + i > k; k++) {
+            
+            if (numerobusca_str[j] == numerobase_str[k]) {
+              if (j + 1 == tam2) {
+                qtdOcorrencias++;
+                break;
+              }
+              else {
+                j++;
+              }
+            }          
+          }
+        }    
+      }
+
+      else {
+        qtdOcorrencias++;
+      }
+      
+    }
+  }
+  
+  
   return qtdOcorrencias;
 }
 
