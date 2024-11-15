@@ -466,53 +466,58 @@ int q4(char *strTexto, char *strBusca, int posicoes[30]) {
       {"Á", "À", "Â", "Ã", "Ä"}, {"É", "È", "Ê", "Ë"}, {"Í", "Ì", "Î", "Ï"},
       {"Ó", "Ò", "Ô", "Õ", "Ö"}, {"Ú", "Ù", "Û", "Ü"}, {"Ç"},
   };
-  char minusculas[6][5] = {
-    {"á", "à", "â", "ã", "ä"}, {"é", "è", "ê", "ë"}, {"í", "ì", "î", "ï"}, 
-    {"ó", "ò", "ô", "õ", "ö"}, {"ú", "ù", "û", "ü"}, {"ç"}};
+  char minusculas[6][5] = {{"á", "à", "â", "ã", "ä"}, {"é", "è", "ê", "ë"},
+                           {"í", "ì", "î", "ï"},      {"ó", "ò", "ô", "õ", "ö"},
+                           {"ú", "ù", "û", "ü"},      {"ç"}};
 
   for (int i = 0; strlen(strTexto) > i; i++) {
     for (int k = 0; k < 5; k++) {
       if (strTexto[i] == maiusculas[0][k] || strTexto[i] == minusculas[0][k]) {
         strTexto[i] = 'a';
-        
+
         for (int j = i + 1; j < strlen(strTexto); j++) {
           strTexto[j] = strTexto[j + 1];
         }
-      } 
-      
-      else if (strTexto[i] == maiusculas[1][k] || strTexto[i] == minusculas[1][k]) {
+      }
+
+      else if (strTexto[i] == maiusculas[1][k] ||
+               strTexto[i] == minusculas[1][k]) {
         strTexto[i] = 'e';
-        
+
         for (int j = i + 1; j < strlen(strTexto); j++) {
           strTexto[j] = strTexto[j + 1];
         }
-      } 
-      
-      else if (strTexto[i] == maiusculas[2][k] || strTexto[i] == minusculas[2][k]) {
+      }
+
+      else if (strTexto[i] == maiusculas[2][k] ||
+               strTexto[i] == minusculas[2][k]) {
         strTexto[i] = 'i';
 
         for (int j = i + 1; j < strlen(strTexto); j++) {
           strTexto[j] = strTexto[j + 1];
         }
-      } 
-      
-      else if (strTexto[i] == maiusculas[3][k] || strTexto[i] == minusculas[3][k]) {
+      }
+
+      else if (strTexto[i] == maiusculas[3][k] ||
+               strTexto[i] == minusculas[3][k]) {
         strTexto[i] = 'o';
 
         for (int j = i + 1; j < strlen(strTexto); j++) {
           strTexto[j] = strTexto[j + 1];
         }
-      } 
-      
-      else if (strTexto[i] == maiusculas[4][k] || strTexto[i] == minusculas[4][k]) {
+      }
+
+      else if (strTexto[i] == maiusculas[4][k] ||
+               strTexto[i] == minusculas[4][k]) {
         strTexto[i] = 'u';
 
         for (int j = i + 1; j < strlen(strTexto); j++) {
           strTexto[j] = strTexto[j + 1];
         }
-      } 
-      
-      else if (strTexto[i] == maiusculas[5][k] || strTexto[i] == minusculas[5][k]) {
+      }
+
+      else if (strTexto[i] == maiusculas[5][k] ||
+               strTexto[i] == minusculas[5][k]) {
         strTexto[i] = 'c';
 
         for (int j = i + 1; j < strlen(strTexto); j++) {
@@ -574,7 +579,25 @@ int q4(char *strTexto, char *strBusca, int posicoes[30]) {
   Número invertido
  */
 
-int q5(int num) { return num; }
+int q5(int num) {
+  int contador = 0;
+  for (int i = num; i > 0; i = i / 10) {
+    contador++;
+  }
+
+  int inversao = 0;
+  while (contador != 0) {
+    int valor = num % 10;
+    inversao = (inversao * 10) + valor;
+    num /= 10;
+
+    contador--;
+  }
+
+  num = inversao;
+
+  return num;
+}
 
 /*
  Q6 = ocorrência de um número em outro
