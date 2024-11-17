@@ -166,7 +166,8 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
   if (q1(datainicial) == 0) {
     dma.retorno = 2;
     return dma;
-  } else if (q1(datafinal) == 0) {
+  } 
+  else if (q1(datafinal) == 0) {
     dma.retorno = 3;
     return dma;
   }
@@ -176,48 +177,58 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
     if (dataInicial.iAno > dataFinal.iAno) {
       dma.retorno = 4;
       return dma;
-    } else if (dataFinal.iAno == dataInicial.iAno &&
-               dataInicial.iMes > dataFinal.iMes) {
+    } 
+      
+    else if (dataFinal.iAno == dataInicial.iAno 
+      && dataInicial.iMes > dataFinal.iMes) {
       dma.retorno = 4;
       return dma;
-    } else if (dataFinal.iAno == dataInicial.iAno &&
-               dataFinal.iMes == dataInicial.iMes &&
-               dataInicial.iDia > dataFinal.iDia) {
+    } 
+      
+    else if (dataFinal.iAno == dataInicial.iAno 
+    && dataFinal.iMes == dataInicial.iMes && 
+    dataInicial.iDia > dataFinal.iDia) {
       dma.retorno = 4;
       return dma;
     }
 
-    // calcule a distancia entre as datas
-    int mesAtual = 31;
-    // checa os meses com 30 dias
-    if (dataInicial.iMes == 4 || dataInicial.iMes == 6 ||
-        dataInicial.iMes == 9 || dataInicial.iMes == 11) {
-      mesAtual = 30;
-    }
 
     int fevAtual = 28;
     // checa bissexto
-    if (dataInicial.iAno % 4 == 0 && dataInicial.iAno / 100 != 0 &&
-        dataInicial.iAno % 400 != 0) {
+    if (dataFinal.iAno % 4 == 0 && (dataFinal.iAno % 100 != 0 || dataFinal.iAno % 400 == 0)) {
       fevAtual = 29;
     }
 
-    // calcula a diferença entre os anos
     dma.qtdAnos = dataFinal.iAno - dataInicial.iAno;
+    dma.qtdMeses = dataFinal.iMes - dataInicial.iMes;
+    dma.qtdDias = dataFinal.iDia - dataInicial.iDia;
 
-    // calcula a diferença entre os meses
-    if (dataFinal.iMes > dataInicial.iMes) {
-      dma.qtdMeses = dataFinal.iMes - dataInicial.iMes;
-    } else {
-      dma.qtdMeses = dataInicial.iMes - dataFinal.iMes;
+
+    if (dma.qtdDias < 0) {
+      int mesAnterior;
+
+      if (dataFinal.iMes == 1) {
+        mesAnterior = 31;
+      }
+      else if (dataFinal.iMes == 3) {
+        mesAnterior = fevAtual;
+      }
+      else if (dataFinal.iMes == 5 || dataFinal.iMes == 7 ||
+               dataFinal.iMes == 10 || dataFinal.iMes == 12) {
+        mesAnterior = 30;
+      }
+      else {
+        mesAnterior = 31;
+      }
+
+      dma.qtdDias += mesAnterior;
+      dma.qtdMeses--;
     }
 
-    // calcula a diferença entre os dias
-    if (dataFinal.iDia > dataInicial.iDia) {
-      dma.qtdDias = dataFinal.iDia - dataInicial.iDia;
-    } else {
-      dma.qtdDias = dataInicial.iDia - dataFinal.iDia;
-    }
+    if (dma.qtdMeses < 0) {
+      dma.qtdMeses += 12;
+      dma.qtdAnos--;
+    } 
 
     // se tudo der certo
     dma.retorno = 1;
@@ -623,7 +634,7 @@ int q6(int numerobase, int numerobusca) {
   sprintf(numerobase_str, "%d", numerobase);
   char numerobusca_str[tam2];
   sprintf(numerobusca_str, "%d", numerobusca);
-  
+
   int qtdOcorrencias;
   qtdOcorrencias = 0;
 
@@ -633,7 +644,7 @@ int q6(int numerobase, int numerobusca) {
       if (tam2 > 1) {
         for (int j = 1; tam2 > j; j++) {
           for (int k = i + 1; tam2 + i > k; k++) {
-            
+
             if (numerobusca_str[j] == numerobase_str[k]) {
               if (j + 1 == tam2) {
                 qtdOcorrencias++;
@@ -650,11 +661,11 @@ int q6(int numerobase, int numerobusca) {
       else {
         qtdOcorrencias++;
       }
-      
+
     }
   }
-  
-  
+
+
   return qtdOcorrencias;
 }
 
