@@ -104,7 +104,7 @@ int q1(char data[]) {
   int ano = dataAtual.iAno;
 
   // checa bissexto
-  if (ano % 4 == 0 && ano / 100 != 0 && ano % 400 != 0) {
+  if (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
     fevereiro = 29;
   }
 
