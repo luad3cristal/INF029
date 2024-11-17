@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
 //renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.h
 #include "LuanaLima20241160012.h"
@@ -12,20 +12,25 @@ void testQ5();
 void testQ6();
 
 int main(){
-    //pridntf("q1\n");
+    printf("q1\n");
     testQ1(); // 10 testes
-    //pridntf("q2\n");
+    
+    printf("\n\nq2\n");
     testQ2(); // 35 testes
-    //prindtf("q3\n");
+    
+    printf("\n\nq3\n");
     testQ3(); // 13 testes
-    //prdintf("q4\n");
+    
+    printf("\n\nq4\n");
     testQ4(); // 22 testes
-    //prdintf("q5\n");
+    
+    printf("\n\nq5\n");
     testQ5(); // 10 testes
-    //prdintf("q6\n");
+    
+    printf("\n\nq6\n");
     testQ6(); // 10 testes 
-    
-    
+
+
 }
 
 void testQ1(){
@@ -203,8 +208,6 @@ void testQ3(){
     printf("%d\n",q3(str, 'e', 0) == 3);
     printf("%d\n",q3(str, 'E', 1) == 2);
     printf("%d\n",q3(str, 'S', 1) == 0);
-
-    
 }
 
 void testQ4(){
@@ -261,7 +264,6 @@ void testQ4(){
 
 }
 
-
 void testQ5(){
     printf("%d\n",q5(345) == 543);
     printf("%d\n",q5(78) == 87);
@@ -288,5 +290,4 @@ void testQ6(){
     printf("%d\n",q6(1234562354, 32) == 0);
 
 }
-      
-        
+

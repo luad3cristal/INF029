@@ -178,13 +178,13 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
       dma.retorno = 4;
       return dma;
     } 
-      
+
     else if (dataFinal.iAno == dataInicial.iAno 
       && dataInicial.iMes > dataFinal.iMes) {
       dma.retorno = 4;
       return dma;
     } 
-      
+
     else if (dataFinal.iAno == dataInicial.iAno 
     && dataFinal.iMes == dataInicial.iMes && 
     dataInicial.iDia > dataFinal.iDia) {
@@ -276,37 +276,37 @@ int q3(char *texto, char c, int isCaseSensitive) {
         for (int j = 0; j < 5; j++) {
           if (c == 'a' && texto[i] == minusculas[0][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'e' && texto[i] == minusculas[1][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'i' && texto[i] == minusculas[2][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'o' && texto[i] == minusculas[3][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'u' && texto[i] == minusculas[4][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'c' && texto[i] == minusculas[5][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'A' && texto[i] == maiusculas[0][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'E' && texto[i] == maiusculas[1][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'I' && texto[i] == maiusculas[2][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'O' && texto[i] == maiusculas[3][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'U' && texto[i] == maiusculas[4][j]) 
             qtdOcorrencias++;
-          
+
           else if (c == 'C' && texto[i] == maiusculas[5][j]) 
             qtdOcorrencias++;
         }
@@ -336,7 +336,7 @@ int q3(char *texto, char c, int isCaseSensitive) {
 
           else if ((c == 'c' || c == 'C') && (texto[i] == minusculas[5][j] || texto[i] == maiusculas[5][j])) 
             qtdOcorrencias++;
-          
+
         }
       }
     }
@@ -546,6 +546,8 @@ int q6(int numerobase, int numerobusca) {
             if (numerobusca_str[j] == numerobase_str[k]) {
               if (j + 1 == tam2) {
                 qtdOcorrencias++;
+
+                i = k;
                 break;
               }
               else {
