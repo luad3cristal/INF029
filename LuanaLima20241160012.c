@@ -194,7 +194,6 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
 
 
     int fevAtual = 28;
-    // checa bissexto
     if (dataFinal.iAno % 4 == 0 && (dataFinal.iAno % 100 != 0 || dataFinal.iAno % 400 == 0)) {
       fevAtual = 29;
     }
@@ -249,15 +248,13 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]) {
   Um número n >= 0.
  */
 int q3(char *texto, char c, int isCaseSensitive) {
-  setlocale(LC_ALL, ""); // Configura o ambiente para exibir caracteres acentuados
-
-  // Matriz de letras maiúsculas acentuadas
+  setlocale(LC_ALL, ""); 
+  
   wchar_t maiusculas[6][5] = {
       {"Á", "À", "Â", "Ã", "Ä"}, {"É", "È", "Ê", "Ë"}, {"Í", "Ì", "Î", "Ï"},
       {"Ó", "Ò", "Ô", "Õ", "Ö"}, {"Ú", "Ù", "Û", "Ü"}, {"Ç", "\0", "\0", "\0", "\0"},
   };
 
-  // Matriz de letras minúsculas acentuadas
   wchar_t minusculas[6][5] = {
       {"á", "à", "â", "ã", "ä"}, {"é", "è", "ê", "ë"}, {"í", "ì", "î", "ï"},
       {"ó", "ò", "ô", "õ", "ö"}, {"ú", "ù", "û", "ü"}, {"ç", "\0", "\0", "\0", "\0"},
