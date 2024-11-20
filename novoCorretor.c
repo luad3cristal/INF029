@@ -12,22 +12,17 @@ void testQ5();
 void testQ6();
 
 int main(){
-    printf("q1\n");
+    //pridntf("q1\n");
     testQ1(); // 10 testes
-    
-    printf("\n\nq2\n");
+    //pridntf("q2\n");
     testQ2(); // 35 testes
-    
-    printf("\n\nq3\n");
+    //prindtf("q3\n");
     testQ3(); // 13 testes
-    
-    printf("\n\nq4\n");
+    //prdintf("q4\n");
     testQ4(); // 22 testes
-    
-    printf("\n\nq5\n");
+    //prdintf("q5\n");
     testQ5(); // 10 testes
-    
-    printf("\n\nq6\n");
+    //prdintf("q6\n");
     testQ6(); // 10 testes 
 
 
@@ -208,6 +203,8 @@ void testQ3(){
     printf("%d\n",q3(str, 'e', 0) == 3);
     printf("%d\n",q3(str, 'E', 1) == 2);
     printf("%d\n",q3(str, 'S', 1) == 0);
+
+
 }
 
 void testQ4(){
@@ -263,6 +260,7 @@ void testQ4(){
     printf("%d\n",posicoes[7]==27);
 
 }
+
 
 void testQ5(){
     printf("%d\n",q5(345) == 543);
