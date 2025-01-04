@@ -118,8 +118,22 @@ Rertono (int)
 */
 int excluirNumeroDoFinaldaEstrutura(int posicao)
 {
-	int retorno = SUCESSO;
-	return retorno;
+	posicao -= 1;
+	
+	if (posicao >= TAM || posicao < 0) {
+		return POSICAO_INVALIDA;
+	}
+
+	if (vetorPrincipal[posicao].vetor == NULL) {
+		return SEM_ESTRUTURA_AUXILIAR;
+	}
+	
+	if (vetorPrincipal[posicao].posicao == 0) {
+		return ESTRUTURA_AUXILIAR_VAZIA;
+	}
+
+	vetorPrincipal[posicao].posicao--;
+	return SUCESSO;
 }
 
 /*
