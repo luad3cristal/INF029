@@ -38,8 +38,7 @@ Rertono (int)
 	SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
 	TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1
 */
-int criarEstruturaAuxiliar(int posicao, int tamanho)
-{
+int criarEstruturaAuxiliar(int posicao, int tamanho){
 	posicao -= 1;
 	
 	if (posicao >= TAM || posicao < 0) {
@@ -79,37 +78,31 @@ Rertono (int)
 	POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
-int inserirNumeroEmEstrutura(int posicao, int valor)
-{
-	int retorno = 0;
-	int existeEstruturaAuxiliar = 0;
-	int temEspaco = 0;
-	int posicao_invalida = 0;
+int inserirNumeroEmEstrutura(int posicao, int valor) {
+	posicao -= 1;
 
-	if (posicao_invalida)
-		retorno = POSICAO_INVALIDA;
-	else
-	{
+	if (posicao >= TAM || posicao < 0)
+		return POSICAO_INVALIDA;
+
+	else {
 		// testar se existe a estrutura auxiliar
-		if (existeEstruturaAuxiliar)
-		{
-			if (temEspaco)
-			{
-				//insere
-				retorno = SUCESSO;
+		if (vetorPrincipal[posicao].vetor != NULL) {
+			
+			if (vetorPrincipal[posicao].posicao < vetorPrincipal[posicao].tamanho){
+				vetorPrincipal[posicao].vetor[vetorPrincipal[posicao].posicao++] = valor;
+				
+				return SUCESSO;
 			}
-			else
-			{
-				retorno = SEM_ESPACO;
+				
+			else {
+				return SEM_ESPACO;
 			}
 		}
-		else
-		{
-			retorno = SEM_ESTRUTURA_AUXILIAR;
+		else {
+			return SEM_ESTRUTURA_AUXILIAR;
 		}
 	}
-
-	return retorno;
+	
 }
 
 /*
