@@ -12,14 +12,29 @@ typedef struct {
 
 estrutura vetorPrincipal[TAM];
 
+void insertionSort (int vetor[], int vetorAux[], int size) {
+	for (int i = 1; i < size; i++) {
+		int key = vetor[i];
+		int j = i - 1;
+		while (j >= 0 && vetor[j] > key) {
+			vetor[++j] = vetor[j];
+			j--;
+		}
+
+		vetor[++j] = key;
+	}
+
+	for (int i = 0; i < size; i++) {
+		vetorAux[i] = vetor[i];
+	}
+}
 
 /*
 Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
 
 */
 
-void inicializar()
-{
+void inicializar() {
 	for (int i = 0; i < TAM; i++) {
 		vetorPrincipal[i].vetor = NULL;
 		vetorPrincipal[i].posicao = 0; 
@@ -116,8 +131,7 @@ Rertono (int)
 	SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
 	POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int excluirNumeroDoFinaldaEstrutura(int posicao)
-{
+int excluirNumeroDoFinaldaEstrutura(int posicao) {
 	posicao -= 1;
 	
 	if (posicao >= TAM || posicao < 0) {
@@ -149,8 +163,7 @@ Rertono (int)
 	POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 
 */
-int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
-{
+int excluirNumeroEspecificoDeEstrutura(int posicao, int valor) {
 	posicao -= 1;
 
 	if (posicao >= TAM || posicao < 0) {
@@ -183,16 +196,10 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 		}
 	}
 
-
-	
-	
-	
-	return SUCESSO;
 }
 
 // se posição é um valor válido {entre 1 e 10}
-int ehPosicaoValida(int posicao)
-{
+int ehPosicaoValida(int posicao) {
 	int retorno = 0;
 	if (posicao < 1 || posicao > 10)
 	{
@@ -214,10 +221,22 @@ Retorno (int)
 */
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
+	posicao -= 1;
 
-	int retorno = 0;
+	if (posicao >= TAM || posicao < 0) {
+		return POSICAO_INVALIDA;
+	}
 
-	return retorno;
+	if (vetorPrincipal[posicao].vetor == NULL) {
+		return SEM_ESTRUTURA_AUXILIAR;
+	}
+
+	else { 
+		for (int i = 0; i < vetorPrincipal[posicao].posicao; i++) {
+			vetorAux[i] = vetorPrincipal[posicao].vetor[i];
+		}
+		return SUCESSO;
+	}
 }
 
 /*
@@ -231,11 +250,20 @@ Rertono (int)
 */
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
+	posicao -= 1;
 
-	int retorno = 0;
+	if (posicao >= TAM || posicao < 0) {
+		return POSICAO_INVALIDA;
+	}
 
+	if (vetorPrincipal[posicao].vetor == NULL) {
+		return SEM_ESTRUTURA_AUXILIAR;
+	}
 
-	return retorno;
+	else {
+		insertionSort(vetorPrincipal[posicao].vetor[vetorPrincipal[posicao].tamanho], vetorAux, vetorPrincipal[posicao].posicao);
+		return SUCESSO;
+	}
 }
 
 /*
