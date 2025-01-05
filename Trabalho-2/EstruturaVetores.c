@@ -264,6 +264,8 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 		insertionSort(vetorPrincipal[posicao].vetor, vetorAux, vetorPrincipal[posicao].posicao);
 		return SUCESSO;
 	}
+
+	
 }
 
 /*
@@ -321,6 +323,7 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 	if (vazio == 1) {
 		return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
 	} 
+		
 	else {
 		insertionSort(vetorAux, vetorAux, contador);
 		return SUCESSO;
@@ -340,9 +343,34 @@ Rertono (int)
 */
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
+	posicao -= 1;
 
-	int retorno = 0;
-	return retorno;
+	if (posicao >= TAM || posicao < 0) {
+		return POSICAO_INVALIDA;
+	}
+
+	if (vetorPrincipal[posicao].vetor == NULL) {
+		return SEM_ESTRUTURA_AUXILIAR;
+	}
+
+	int tamanhoTotal = novoTamanho + vetorPrincipal[posicao].tamanho;
+	int *vetorAtualizado = realloc(vetorPrincipal[posicao].vetor, sizeof(int) * tamanhoTotal);
+	
+	if (tamanhoTotal < 0) {
+		return NOVO_TAMANHO_INVALIDO;
+	} 
+
+	if (vetorAtualizado == NULL) {
+		return SEM_ESPACO_DE_MEMORIA;
+	}
+
+	vetorPrincipal[posicao].tamanho = tamanhoTotal;
+	vetorPrincipal[posicao].vetor = vetorAtualizado;
+	if (vetorPrincipal[posicao].posicao > vetorPrincipal[posicao].tamanho) {
+		vetorPrincipal[posicao].posicao = vetorPrincipal[posicao].tamanho;
+	}
+
+	return SUCESSO;
 }
 
 /*
