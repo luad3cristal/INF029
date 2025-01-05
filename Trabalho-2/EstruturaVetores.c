@@ -261,7 +261,7 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 	}
 
 	else {
-		insertionSort(vetorPrincipal[posicao].vetor[vetorPrincipal[posicao].tamanho], vetorAux, vetorPrincipal[posicao].posicao);
+		insertionSort(vetorPrincipal[posicao].vetor, vetorAux, vetorPrincipal[posicao].posicao);
 		return SUCESSO;
 	}
 }
