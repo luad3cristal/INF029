@@ -276,9 +276,23 @@ Rertono (int)
 */
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
+	int vazio = 1;
+	int contador = 0;
+	
+	for (int i = 0; i < TAM; i++) {
+		if (vetorPrincipal[i].vetor != NULL) {
+			for (int j = 0; j < vetorPrincipal[i].posicao; j++) {
+				vetorAux[contador] = vetorPrincipal[i].vetor[j];
+				contador++;
+				vazio = 0;	
+			}
+		}
+	}
+	if (vazio == 1) {
+		return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
+	}
 
-	int retorno = 0;
-	return retorno;
+	return SUCESSO;
 }
 
 /*
@@ -291,9 +305,26 @@ Rertono (int)
 */
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
+	int vazio = 1;
+	int contador = 0;
 
-	int retorno = 0;
-	return retorno;
+	for (int i = 0; i < TAM; i++) {
+		if (vetorPrincipal[i].vetor != NULL) {
+			for (int j = 0; j < vetorPrincipal[i].posicao; j++) {
+				vetorAux[contador] = vetorPrincipal[i].vetor[j];
+				contador++;
+				vazio = 0;	
+			}
+		}
+	}
+	
+	if (vazio == 1) {
+		return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
+	} 
+	else {
+		insertionSort(vetorAux, vetorAux, contador);
+		return SUCESSO;
+	}
 }
 
 /*
