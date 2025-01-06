@@ -232,7 +232,11 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 		return SEM_ESTRUTURA_AUXILIAR;
 	}
 
-	else { 
+	else {
+		// for (int i = 0; i < vetorPrincipal[posicao].posicao; i++) {
+		// 	printf("\n%d\n", vetorPrincipal[posicao].vetor[i]);
+		// }
+		
 		for (int i = 0; i < vetorPrincipal[posicao].posicao; i++) {
 			vetorAux[i] = vetorPrincipal[posicao].vetor[i];
 		}
@@ -382,10 +386,24 @@ Retorno (int)
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
+	posicao -= 1;
+	
+	if (posicao >= TAM || posicao < 0) {
+		return POSICAO_INVALIDA;
+	}
 
-	int retorno = 0;
-
-	return retorno;
+	if (vetorPrincipal[posicao].vetor == NULL) {
+		return SEM_ESTRUTURA_AUXILIAR;
+	}
+	else {
+		if (vetorPrincipal[posicao].posicao == 0) {
+			return ESTRUTURA_AUXILIAR_VAZIA;
+		}
+		else {
+			return vetorPrincipal[posicao].posicao;
+		}
+	}
+	
 }
 
 /*
