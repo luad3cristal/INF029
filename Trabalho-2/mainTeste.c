@@ -17,14 +17,14 @@ void testeListaEncadeada();
 
 int main()
 {
-  // inicializar();
-  // testeInserirSemNada(); //✅
-  // testeCriarEstrutura(); //✅
-  // testeInserirComEstrutura(); //✅
-  // testeExcluir(); //✅
-  // testeExcluirNumeroEspecifico(); //✅
-  // testeListar(); //✅
-  // testeRetornarTodosNumeros(); //✅
+  inicializar();
+  testeInserirSemNada(); //✅
+  testeCriarEstrutura(); //✅
+  testeInserirComEstrutura(); //✅
+  testeExcluir(); //✅
+  testeExcluirNumeroEspecifico(); //✅
+  testeListar(); //✅
+  testeRetornarTodosNumeros(); //✅
   // testeMudarTamanhoEstrutura(); //✅
   // testeListaEncadeada();
   // finalizar();

@@ -13,20 +13,22 @@ typedef struct {
 estrutura vetorPrincipal[TAM];
 
 void insertionSort (int vetor[], int vetorAux[], int size) {
-	for (int i = 1; i < size; i++) {
-		int key = vetor[i];
-		int j = i - 1;
-		while (j >= 0 && vetor[j] > key) {
-			vetor[++j] = vetor[j];
-			j--;
-		}
-
-		vetor[++j] = key;
-	}
-
 	for (int i = 0; i < size; i++) {
 		vetorAux[i] = vetor[i];
 	}
+	
+	for (int i = 1; i < size; i++) {
+		int key = vetorAux[i];
+		int j = i - 1;
+		while (j >= 0 && vetorAux[j] > key) {
+			vetorAux[j + 1] = vetorAux[j];
+			j--;
+		}
+
+		vetorAux[++j] = key;
+	}
+
+
 }
 
 /*
@@ -117,7 +119,6 @@ int inserirNumeroEmEstrutura(int posicao, int valor) {
 			return SEM_ESTRUTURA_AUXILIAR;
 		}
 	}
-	
 }
 
 /*
@@ -264,8 +265,6 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 		insertionSort(vetorPrincipal[posicao].vetor, vetorAux, vetorPrincipal[posicao].posicao);
 		return SUCESSO;
 	}
-
-	
 }
 
 /*
@@ -323,7 +322,6 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 	if (vazio == 1) {
 		return TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
 	} 
-		
 	else {
 		insertionSort(vetorAux, vetorAux, contador);
 		return SUCESSO;
