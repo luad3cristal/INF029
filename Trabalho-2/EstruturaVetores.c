@@ -231,12 +231,7 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 	if (vetorPrincipal[posicao].vetor == NULL) {
 		return SEM_ESTRUTURA_AUXILIAR;
 	}
-
 	else {
-		// for (int i = 0; i < vetorPrincipal[posicao].posicao; i++) {
-		// 	printf("\n%d\n", vetorPrincipal[posicao].vetor[i]);
-		// }
-		
 		for (int i = 0; i < vetorPrincipal[posicao].posicao; i++) {
 			vetorAux[i] = vetorPrincipal[posicao].vetor[i];
 		}
@@ -355,21 +350,21 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 		return SEM_ESTRUTURA_AUXILIAR;
 	}
 
-	int tamanhoTotal = novoTamanho + vetorPrincipal[posicao].tamanho;
-	int *vetorAtualizado = realloc(vetorPrincipal[posicao].vetor, sizeof(int) * tamanhoTotal);
-	
+	int tamanhoTotal = novoTamanho + vetorPrincipal[posicao].tamanho; 
 	if (tamanhoTotal < 1) {
 		return NOVO_TAMANHO_INVALIDO;
 	} 
-
+	
+	int *vetorAtualizado = realloc(vetorPrincipal[posicao].vetor, sizeof(int) * tamanhoTotal);
 	if (vetorAtualizado == NULL) {
 		return SEM_ESPACO_DE_MEMORIA;
 	}
 
-	vetorPrincipal[posicao].tamanho = tamanhoTotal;
-	vetorPrincipal[posicao].vetor = vetorAtualizado;
-	if (vetorPrincipal[posicao].posicao > vetorPrincipal[posicao].tamanho) {
-		vetorPrincipal[posicao].posicao = vetorPrincipal[posicao].tamanho;
+	vetorPrincipal[posicao].tamanho = tamanhoTotal; 
+	vetorPrincipal[posicao].vetor = vetorAtualizado; 
+
+	while (vetorPrincipal[posicao].posicao > vetorPrincipal[posicao].tamanho) {
+		vetorPrincipal[posicao].posicao--;
 	}
 
 	return SUCESSO;
