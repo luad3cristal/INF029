@@ -27,8 +27,22 @@ void insertionSort (int vetor[], int vetorAux[], int size) {
 
 		vetorAux[++j] = key;
 	}
+}
+
+int organizarCabecote(int valor, No **cabecote) {
+	No *novoCabecote = (No *)malloc(sizeof(No));
+
+	if (novoCabecote == NULL) {
+		return 0;
+	}
+
+	novoCabecote->conteudo = valor;
+	novoCabecote->prox = NULL;
 
 
+	(*cabecote)->prox = novoCabecote;
+	*cabecote = novoCabecote;
+	return 1;
 }
 
 /*
@@ -410,8 +424,25 @@ Retorno (No*)
 */
 No *montarListaEncadeadaComCabecote()
 {
+	No *cabecote = malloc(sizeof(No));
+	if (cabecote == NULL) 
+		return NULL;	
 
-	return NULL;
+	cabecote->prox = NULL;
+
+	No *aux = cabecote;
+
+	for (int i = 0; i < TAM; i++) {
+		if (vetorPrincipal[i].vetor != NULL) {
+			for (int j = 0; j < vetorPrincipal[i].posicao; j++) {
+				if(!organizarCabecote(vetorPrincipal[i].vetor[j], &aux)) {
+					return NULL;
+				}
+			}
+		}
+	}
+
+	return cabecote;
 }
 
 /*
@@ -420,6 +451,11 @@ Retorno void
 */
 void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[])
 {
+	No *cabecote = inicio->prox;
+	
+	for (int i = 0; cabecote != NULL; cabecote = cabecote->prox, i++) {
+		vetorAux[i] = cabecote->conteudo;
+	}
 }
 
 /*
@@ -431,6 +467,18 @@ Retorno
 */
 void destruirListaEncadeadaComCabecote(No **inicio)
 {
+	No *cabecote = *inicio;
+	No *aux;
+
+	while (cabecote != NULL) {
+		aux = cabecote;
+		cabecote = cabecote->prox;
+		free(aux);
+	}
+
+	*inicio = NULL;
+
+	
 }
 
 /*
@@ -441,4 +489,9 @@ para poder liberar todos os espaços de memória das estruturas auxiliares.
 
 void finalizar()
 {
+	for (int i = 0; i < TAM; i++) {
+		vetorPrincipal[i].vetor = NULL;
+		vetorPrincipal[i].posicao = 0; 
+		vetorPrincipal[i].tamanho = 0; 
+	}
 }
