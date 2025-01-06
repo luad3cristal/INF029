@@ -354,7 +354,7 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 	int tamanhoTotal = novoTamanho + vetorPrincipal[posicao].tamanho;
 	int *vetorAtualizado = realloc(vetorPrincipal[posicao].vetor, sizeof(int) * tamanhoTotal);
 	
-	if (tamanhoTotal < 0) {
+	if (tamanhoTotal < 1) {
 		return NOVO_TAMANHO_INVALIDO;
 	} 
 
