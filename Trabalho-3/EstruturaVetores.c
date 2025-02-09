@@ -477,7 +477,7 @@ char *lerArquivo(char *caminho) {
   if (!arquivo) {
     return NULL;
   }
-
+  
   fseek(arquivo, 0, SEEK_END);
   long fileSize = ftell(arquivo);
   rewind(arquivo);
@@ -509,7 +509,7 @@ void salvarArquivos() {
 
   for (int i = 0; i < TAM; i++) {
     if (vetorPrincipal[i].vetor == NULL) {
-      strcat(buffer, "0");
+      strcat(buffer, "0 0");
     } else {
       sprintf(linha, "%d %d ", vetorPrincipal[i].tamanho,
               vetorPrincipal[i].posicao);
@@ -518,11 +518,11 @@ void salvarArquivos() {
         if (j < vetorPrincipal[i].posicao) {
           sprintf(linha, "%d ", vetorPrincipal[i].vetor[j]);
           strcat(buffer, linha);
-        } else
+        } 
+        else
           break;
       }
     }
-    // Adiciona uma nova linha apenas se não for a última estrutura
     if (i + 1 != TAM) {
       strcat(buffer, "\n");
     }
